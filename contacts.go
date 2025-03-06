@@ -5,7 +5,6 @@ import "fmt"
 type Contact struct {
 	Email  string `json:"email"`
 	Status string `json:"status"`
-	TagId  string `json:"tag_id,omitempty"`
 	Data   struct {
 		FirstName   string `json:"firstName"`
 		LastName    string `json:"lastName"`
@@ -18,6 +17,9 @@ type Contact struct {
 		Zipcode     string `json:"zipcode"`
 	} `json:"data"`
 }
+type TagId struct {
+	TagId string `json:"tag_id"`
+}
 
 func (c *Client) CreateContact(listID string, contact Contact) ([]byte, error) {
 	endpoint := fmt.Sprintf("contacts/%s/create", listID)
@@ -29,12 +31,12 @@ func (c *Client) UnsubscribeContact(listID string, contactId string, contact Con
 	return c.request("POST", endpoint, contact)
 }
 
-func (c *Client) AddTag(contactId string, contact Contact) ([]byte, error) {
+func (c *Client) AddTag(contactId string, tagId TagId) ([]byte, error) {
 	endpoint := fmt.Sprintf("contacts/tags/%s/add", contactId)
-	return c.request("POST", endpoint, contact)
+	return c.request("POST", endpoint, tagId)
 }
 
-func (c *Client) RemoveContactTag(contactId string, contact Contact) ([]byte, error) {
+func (c *Client) RemoveContactTag(contactId string, tagId TagId) ([]byte, error) {
 	endpoint := fmt.Sprintf("contacts/tags/%s/remove", contactId)
-	return c.request("POST", endpoint, contact)
+	return c.request("POST", endpoint, tagId)
 }
