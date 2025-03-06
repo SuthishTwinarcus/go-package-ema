@@ -25,6 +25,6 @@ func (c *Client) RetrieveTag(tagID string) ([]byte, error) {
 }
 
 func (c *Client) DeleteTag(tagID string) ([]byte, error) {
-	endpoint := fmt.Sprintf("tags/delete/%s", tagID)
+	endpoint := fmt.Sprintf("tags/%s/delete", tagID)
 	return c.request("POST", endpoint, nil)
 }
