@@ -7,7 +7,7 @@ type Contact struct {
 	Name  string `json:"name,omitempty"`
 }
 
-func (c *Client) CreateContact(listID string, contactData map[string]interface{}) ([]byte, error) {
+func (c *Client) CreateContact(listID string, contactData Contact) ([]byte, error) {
 	endpoint := fmt.Sprintf("contacts/%s/create", listID)
 	return c.request("POST", endpoint, contactData)
 }
