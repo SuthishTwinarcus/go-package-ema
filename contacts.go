@@ -4,17 +4,17 @@ import "fmt"
 
 type Contact struct {
 	Email  string `json:"email"`
-	Status string `json:"sub_status"`
+	Status string `json:"status"`
 	Data   struct {
-		FirstName string `json:"first_name"`
-		LastName  string `json:"last_name"`
-		Phone     string `json:"mobile_number"`
-		Gender    string `json:"gender"`
-		Address   string `json:"address"`
-		City      string `json:"city"`
-		State     string `json:"state"`
-		Country   string `json:"country"`
-		Zipcode   string `json:"zipcode"`
+		FirstName   string `json:"firstName"`
+		LastName    string `json:"lastName"`
+		Phone       string `json:"phone"`
+		DateOfBirth string `json:"dateOfBirth"`
+		Address     string `json:"address"`
+		City        string `json:"city"`
+		State       string `json:"state"`
+		Country     string `json:"country"`
+		Zipcode     string `json:"zipcode"`
 	} `json:"data"`
 }
 
