@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const BaseURL = "http://api.yonoma.io/v1/"
+const BaseURL = "http://localhost:8080/v1/"
 
 type Client struct {
 	APIKey string
