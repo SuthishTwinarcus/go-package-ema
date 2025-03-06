@@ -5,7 +5,7 @@ import "fmt"
 type Contact struct {
 	Email  string `json:"email"`
 	Status string `json:"status"`
-	TagId  string `json:"tag_id"`
+	TagId  string `json:"tag_id,omitempty"`
 	Data   struct {
 		FirstName   string `json:"firstName"`
 		LastName    string `json:"lastName"`
