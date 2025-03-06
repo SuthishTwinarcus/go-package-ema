@@ -3,7 +3,7 @@ package yonoma
 import "fmt"
 
 type Contact struct {
-	Email  string `json:"contact_email"`
+	email  string `json:"contact_email"`
 	Status string `json:"sub_status"`
 	Data   struct {
 		FirstName string `json:"first_name"`
