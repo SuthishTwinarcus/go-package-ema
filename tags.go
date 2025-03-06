@@ -15,14 +15,14 @@ func (c *Client) CreateTag(tagData map[string]interface{}) ([]byte, error) {
 }
 
 func (c *Client) UpdateTag(tagID string, tagData map[string]interface{}) ([]byte, error) {
-	endpoint := fmt.Sprintf("tags/%s/update", tagID)
+	endpoint := fmt.Sprintf("tags/update", tagID)
 	return c.request("POST", endpoint, tagData)
 }
 
 func (c *Client) RetrieveTag(tagID string) ([]byte, error) {
-	return c.request("GET", "tags/%s"+tagID, nil)
+	return c.request("GET", "tags/"+tagID, nil)
 }
 
 func (c *Client) DeleteTag(tagID string) ([]byte, error) {
-	return c.request("POST", "tags/%s/delete"+tagID, nil)
+	return c.request("POST", "tags/delete"+tagID, nil)
 }
