@@ -13,28 +13,18 @@ client := yonoma.NewClient("api-key")
 #### Create new contact
 ```go
 contactData := yonoma.Contact{
-    Email:  "johndavid12@gmail.com",
-    Status: "Subscribed",
-    Data: struct {
-        FirstName   string `json:"firstName"`
-        LastName    string `json:"lastName"`
-        Phone       string `json:"phone"`
-        DateOfBirth string `json:"dateOfBirth"`
-        Address     string `json:"address"`
-        City        string `json:"city"`
-        State       string `json:"state"`
-        Country     string `json:"country"`
-        Zipcode     string `json:"zipcode"`
-    }{
-        FirstName:   "Johndavid",
-        LastName:    "12",
-        Phone:       "+1234567890",
-        DateOfBirth: "2-08-1994",
-        Address:     "123 Main St",
-        City:        "New York",
-        State:       "NY",
-        Country:     "USA",
-        Zipcode:     "10001",
+    Email:  "glennjacob@example.com",
+    Status: "Subscribed" | "Unsubscribed",
+    Data: yonoma.ContactData{
+        FirstName: string,
+        LastName:  string,
+        Phone:     string,
+        Gender:    string,
+        Address:   string,
+        City:      string,
+        State:     string,
+        Country:   string,
+        Zipcode:   string,
     },
 }
 response, err := client.CreateContact("List Id", contactData) 
@@ -51,14 +41,14 @@ response, err := client.UnsubscribeContact("List Id", "Contact Id", contactData)
 contactData := yonoma.TagId{
 	TagId: "Tag Id",
 }
-response, err := client.AddTag("Contact Id", contactData)
+response, err := client.AddContactTag("Contact Id", contactData)
 ```
 #### Remove tag from contact
 ```go
 contactData := yonoma.TagId{
 	TagId: "Tag Id",
 }
-response, err := client.RemoveTag("Contact Id", contactData)
+response, err := client.RemoveContactTag("Contact Id", contactData)
 
 ```
 ## Managing Tags

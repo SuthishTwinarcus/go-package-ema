@@ -1,5 +1,7 @@
 package yonoma
 
+import "fmt"
+
 type List struct {
 	Name string `json:"list_name"`
 }
@@ -13,13 +15,16 @@ func (c *Client) CreateList(list List) ([]byte, error) {
 }
 
 func (c *Client) UpdateList(listID string, list List) ([]byte, error) {
-	return c.request("POST", "lists/"+listID+"/update", list)
+	endpoint := fmt.Sprintf("lists/%s/update", listID)
+	return c.request("POST", endpoint, list)
 }
 
 func (c *Client) RetrieveList(listID string) ([]byte, error) {
-	return c.request("GET", "lists/"+listID, nil)
+	endpoint := fmt.Sprintf("lists/%s", listID)
+	return c.request("GET", endpoint, nil)
 }
 
 func (c *Client) DeleteList(listID string) ([]byte, error) {
-	return c.request("POST", "lists/"+listID+"/delete", nil)
+	endpoint := fmt.Sprintf("lists/%s/delete", listID)
+	return c.request("POST", endpoint, nil)
 }
