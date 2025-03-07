@@ -3,19 +3,20 @@ package yonoma
 import "fmt"
 
 type Contact struct {
-	Email  string `json:"email"`
-	Status string `json:"status"`
-	Data   struct {
-		FirstName   string `json:"firstName"`
-		LastName    string `json:"lastName"`
-		Phone       string `json:"phone"`
-		DateOfBirth string `json:"dateOfBirth"`
-		Address     string `json:"address"`
-		City        string `json:"city"`
-		State       string `json:"state"`
-		Country     string `json:"country"`
-		Zipcode     string `json:"zipcode"`
-	} `json:"data"`
+	Email  string      `json:"email"`
+	Status string      `json:"status"`
+	Data   ContactData `json:"data"`
+}
+type ContactData struct {
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+	Phone     string `json:"phone"`
+	Gender    string `json:"gender"`
+	Address   string `json:"address"`
+	City      string `json:"city"`
+	State     string `json:"state"`
+	Country   string `json:"country"`
+	Zipcode   string `json:"zipcode"`
 }
 type TagId struct {
 	TagId string `json:"tag_id"`

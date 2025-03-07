@@ -12,59 +12,69 @@ client := yonoma.NewClient("api-key")
 ## Contacts
 #### Create new contact
 ```go
-contactData := map[string]any{
-  "email" : "email@example.com",
-  "status": "Subscribed" | "Unsubscribed"
-  "data": {
-    "firstName": string,
-    "lastName": string,
-    "phone": string,
-    "gender": string,
-    "address": string,
-    "city": string,
-    "state": string,
-    "country": string,
-    "zipcode": string,
-  }
+contactData := yonoma.Contact{
+    Email:  "johndavid12@gmail.com",
+    Status: "Subscribed",
+    Data: struct {
+        FirstName   string `json:"firstName"`
+        LastName    string `json:"lastName"`
+        Phone       string `json:"phone"`
+        DateOfBirth string `json:"dateOfBirth"`
+        Address     string `json:"address"`
+        City        string `json:"city"`
+        State       string `json:"state"`
+        Country     string `json:"country"`
+        Zipcode     string `json:"zipcode"`
+    }{
+        FirstName:   "Johndavid",
+        LastName:    "12",
+        Phone:       "+1234567890",
+        DateOfBirth: "2-08-1994",
+        Address:     "123 Main St",
+        City:        "New York",
+        State:       "NY",
+        Country:     "USA",
+        Zipcode:     "10001",
+    },
 }
-response, err := client.CreateContact("Contact Id", contactData) 
+response, err := client.CreateContact("List Id", contactData) 
 ```
 #### Update contact
 ```go
-contactData := map[string]any{
-    "status" : "Subscribed" | "Unsubscribed"
+contactData := yonoma.Status{
+	Status: "Subscribed" | "Unsubscribed",
 }
 response, err := client.UnsubscribeContact("List Id", "Contact Id", contactData)
 ```
 #### Add tag to contact
 ```go
-contactData := map[string]any{
-    "tag_id" : "Tag Id"
+contactData := yonoma.TagId{
+	TagId: "Tag Id",
 }
 response, err := client.AddTag("Contact Id", contactData)
 ```
 #### Remove tag from contact
 ```go
-contactData := map[string]any{
-    "tag_id" : "Tag Id"
+contactData := yonoma.TagId{
+	TagId: "Tag Id",
 }
-response, err := client.RemoveContactTag("Contact Id", contactData)
+response, err := client.RemoveTag("Contact Id", contactData)
 
 ```
 ## Managing Tags
 #### Create a Tag
 ```go
-tagData := map[string]any{
-    "tag_name" : "Tag Name"
+tagData := yonoma.Tag{
+	Name: "Tag Name",
 }
 response, err := client.CreateTag(tagData)
 ```
 #### Update a Tag
 ```go
-tagData := map[string]any{
-    "tag_name" : "Tag Name"
+tagData := yonoma.Tag{
+	Name: "Tag Name",
 }
-response, err := client.UpdateTag("Tag Id", tagData)
+response, err := client.UpdateTag(tagData)
 ```
 #### Delete a Tag
 ```go
@@ -81,16 +91,16 @@ response, err := client.ListTags()
 ## Managing Lists
 #### Create a List
 ```go
-listData := map[string]any{
-    "list_name" : "List Name"
+listData := yonoma.List{
+	Name: "List Name",
 }
 response, err := client.CreateList(listData)
 
 ```
 #### Update a List
 ```go
-listData := map[string]any{
-    "list_name" : "List Name"
+listData := yonoma.List{
+	Name: "List Name",
 }
 response, err := client.UpdateList("List Id", listData)
 ```
