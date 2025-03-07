@@ -7,11 +7,11 @@ type Tag struct {
 }
 
 func (c *Client) ListTags() ([]byte, error) {
-	return c.request("GET", "/tags/list", nil)
+	return c.request("GET", "tags/list", nil)
 }
 
 func (c *Client) CreateTag(tag Tag) ([]byte, error) {
-	return c.request("POST", "/tags/create", tag)
+	return c.request("POST", "tags/create", tag)
 }
 
 func (c *Client) UpdateTag(tagID string, tag Tag) ([]byte, error) {
