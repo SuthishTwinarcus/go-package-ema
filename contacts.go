@@ -20,18 +20,21 @@ type Contact struct {
 type TagId struct {
 	TagId string `json:"tag_id"`
 }
+type Status struct {
+	Status string `json:"status"`
+}
 
 func (c *Client) CreateContact(listID string, contact Contact) ([]byte, error) {
 	endpoint := fmt.Sprintf("contacts/%s/create", listID)
 	return c.request("POST", endpoint, contact)
 }
 
-func (c *Client) UnsubscribeContact(listID string, contactId string, contact Contact) ([]byte, error) {
+func (c *Client) UnsubscribeContact(listID string, contactId string, status Status) ([]byte, error) {
 	endpoint := fmt.Sprintf("contacts/%s/status/%s", listID, contactId)
-	return c.request("POST", endpoint, contact)
+	return c.request("POST", endpoint, status)
 }
 
-func (c *Client) AddTag(contactId string, tagId TagId) ([]byte, error) {
+func (c *Client) AddContactTag(contactId string, tagId TagId) ([]byte, error) {
 	endpoint := fmt.Sprintf("contacts/tags/%s/add", contactId)
 	return c.request("POST", endpoint, tagId)
 }
