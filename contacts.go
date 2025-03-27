@@ -3,14 +3,14 @@ package yonoma
 import "fmt"
 
 type Contact struct {
-	Email  string      `json:"email"`
-	Status string      `json:"status"`
+	Email  string      `json:"contact_email"`
+	Status string      `json:"sub_status"`
 	Data   ContactData `json:"data"`
 }
 type ContactData struct {
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
-	Phone     string `json:"phone"`
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+	Phone     string `json:"mobile_number"`
 	Gender    string `json:"gender"`
 	Address   string `json:"address"`
 	City      string `json:"city"`
@@ -22,7 +22,7 @@ type TagId struct {
 	TagId string `json:"tag_id"`
 }
 type Status struct {
-	Status string `json:"status"`
+	Status string `json:"sub_status"`
 }
 
 func (c *Client) CreateContact(listID string, contact Contact) ([]byte, error) {

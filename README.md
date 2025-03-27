@@ -9,6 +9,16 @@ First, you need to get an API key:
 client := yonoma.NewClient("api-key") 
 ```
 ### Usage
+## Send your email:
+```go
+email := yonoma.Email{
+    FromEmail:    "updates@yonoma.io",
+    ToEmail:      "email@yourdomain.com",
+    Subject:      "Welcome to Yonoma - You're In!",
+    MailTemplate: "We're excited to welcome you to Yonoma! Your successful signup marks the beginning of what we hope will be an exceptional journey."
+}
+response, _ := client.Send(email)
+```
 ## Contacts
 #### Create new contact
 ```go
@@ -27,28 +37,28 @@ contactData := yonoma.Contact{
         Zipcode:   string,
     },
 }
-response, err := client.CreateContact("List Id", contactData) 
+response, _ := client.CreateContact("List Id", contactData) 
 ```
 #### Update contact
 ```go
 contactData := yonoma.Status{
 	Status: "Subscribed" | "Unsubscribed",
 }
-response, err := client.UnsubscribeContact("List Id", "Contact Id", contactData)
+response, _ := client.UnsubscribeContact("List Id", "Contact Id", contactData)
 ```
 #### Add tag to contact
 ```go
 contactData := yonoma.TagId{
 	TagId: "Tag Id",
 }
-response, err := client.AddContactTag("Contact Id", contactData)
+response, _ := client.AddContactTag("Contact Id", contactData)
 ```
 #### Remove tag from contact
 ```go
 contactData := yonoma.TagId{
 	TagId: "Tag Id",
 }
-response, err := client.RemoveContactTag("Contact Id", contactData)
+response, _ := client.RemoveContactTag("Contact Id", contactData)
 
 ```
 ## Managing Tags
@@ -57,26 +67,26 @@ response, err := client.RemoveContactTag("Contact Id", contactData)
 tagData := yonoma.Tag{
 	Name: "Tag Name",
 }
-response, err := client.CreateTag(tagData)
+response, _ := client.CreateTag(tagData)
 ```
 #### Update a Tag
 ```go
 tagData := yonoma.Tag{
 	Name: "Tag Name",
 }
-response, err := client.UpdateTag(tagData)
+response, _ := client.UpdateTag(tagData)
 ```
 #### Delete a Tag
 ```go
-response, err := client.DeleteTag("Tag Id")
+response, _ := client.DeleteTag("Tag Id")
 ```
 #### Retrieve a Specific Tag
 ```go
-response, err := client.RetrieveTag("Tag Id")
+response, _ := client.RetrieveTag("Tag Id")
 ```
 #### List All Tags
 ```go
-response, err := client.ListTags()
+response, _ := client.ListTags()
 ```
 ## Managing Lists
 #### Create a List
@@ -84,7 +94,7 @@ response, err := client.ListTags()
 listData := yonoma.List{
 	Name: "List Name",
 }
-response, err := client.CreateList(listData)
+response, _ := client.CreateList(listData)
 
 ```
 #### Update a List
@@ -92,19 +102,19 @@ response, err := client.CreateList(listData)
 listData := yonoma.List{
 	Name: "List Name",
 }
-response, err := client.UpdateList("List Id", listData)
+response, _ := client.UpdateList("List Id", listData)
 ```
 #### Delete a List
 ```go
-response, err := client.DeleteList("List Id")
+response, _ := client.DeleteList("List Id")
 ```
 #### Retrieve a Specific List
 ```go
-response, err := client.RetrieveList("List Id")
+response, _ := client.RetrieveList("List Id")
 ```
 #### List All Lists
 ```go
-response, err := client.ListLists()
+response, _ := client.ListLists()
 ```
 
 
